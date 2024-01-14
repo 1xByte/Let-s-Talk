@@ -1,10 +1,13 @@
 package com.panda.Let.sTalk.service;
 
+import com.panda.Let.sTalk.dto.ChangePass;
 import com.panda.Let.sTalk.dto.UserLogIn;
 import com.panda.Let.sTalk.dto.UserSignUp;
 import com.panda.Let.sTalk.model.User;
 import com.panda.Let.sTalk.repo.UserRepo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class UserServiceImpl implements UserService{
@@ -42,11 +45,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public String changePassword(String email, String pass) {
-        Optional<User> repo = userRepo.findByUserEmail(email);
+    public String changePassword(ChangePass changePass) {
+        Optional<User> repo = userRepo.findByUserEmail(changePass.getUserEmail());
 
-        if (repo.isPresent() && !repo.get().getPassword().equals(pass)) {
-            repo.get().setPassword(pass);
+        if (repo.isPresent() && !repo.get().getPassword().equals(changePass.getUserPass())) {
+            repo.get().setPassword(changePass.getNewPass());
         }
         userRepo.save(repo.get());
 

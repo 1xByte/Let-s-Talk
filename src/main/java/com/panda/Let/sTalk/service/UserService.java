@@ -1,5 +1,6 @@
 package com.panda.Let.sTalk.service;
 
+import com.panda.Let.sTalk.dto.ChangePass;
 import com.panda.Let.sTalk.dto.UserLogIn;
 import com.panda.Let.sTalk.dto.UserSignUp;
 import com.panda.Let.sTalk.model.User;
@@ -10,5 +11,5 @@ public interface UserService {
 
     Boolean userLogIn(UserLogIn userLogIn);
 
-    String changePassword(String email, String pass);
+    String changePassword(ChangePass changePass);
 }
